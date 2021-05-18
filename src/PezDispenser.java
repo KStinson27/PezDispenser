@@ -5,7 +5,7 @@ public class PezDispenser {
         final private String characterName;
         public final static int MAX_PEZ = 12;
         private int pezCount;
-        public int pezAmount;
+        private int pezAmount;
 
         Scanner scan = new Scanner(System.in);
 
@@ -30,14 +30,13 @@ public class PezDispenser {
             dispense();
         }
         public void fill(int pezAmount){
-            pezAmount = this.pezAmount;
+            this.pezAmount = pezAmount;
             int newAmount = pezCount + pezAmount;
             if(newAmount > MAX_PEZ){
                 throw new IllegalArgumentException("That is too many Pez! You can only add " + MAX_PEZ + ".");
             }
             pezCount = newAmount;
         }
-
 
         public boolean dispense(){
             boolean wasDispensed = false;

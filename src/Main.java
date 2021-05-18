@@ -1,21 +1,24 @@
 import java.util.Scanner;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
 
         Scanner scan = new Scanner(System.in);
-        int pezAmount;
+        //int pezAmount;
         String pezRefill;
 
         System.out.println("We are making a new PEZ dispenser");
 
-        PezDispenser PD = new PezDispenser("Yoda");
-        System.out.println("The dispenser is " + PD.getCharacterName());
+        System.out.println("What character do you want for your PEZ dispenser?");
+        String characterName = scan.nextLine();
 
-        System.out.println("There are only " + PezDispenser.MAX_PEZ + " pez candies allowed in every dispenser");
+        PezDispenser PD = new PezDispenser(characterName);
+        System.out.println("Congrats! You now have a(n) " + PD.getCharacterName() + " dispenser.");
+        System.out.println("*****************");
+        System.out.println("NOTE: There are only " + PezDispenser.MAX_PEZ + " pez candies allowed in every dispenser");
+        System.out.println("*****************");
 
         if (PD.isEmpty()) {
-            System.out.println("It's currently empty");
             System.out.println("Filling pez dispenser....");
             PD.fill();
         }
@@ -37,7 +40,6 @@ public class main {
 
             if (pezRefill.equalsIgnoreCase("yes") /*&& PD.getAmount() != 0*/) {
                 boolean isDone = false;
-                //PD.getAmount();
                 while(!isDone) {
 
                     try {
@@ -63,8 +65,6 @@ public class main {
                         System.out.println(iae.getMessage());
                         isDone = true;
                     }
-
-
                 }
             }else{
                 System.out.println("Okay, Refill when you're ready! Goodbye!");
